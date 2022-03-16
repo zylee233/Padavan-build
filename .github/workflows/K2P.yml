@@ -1,4 +1,4 @@
-name: DIR-882
+name: K2P
 
 on: 
   release:
@@ -37,7 +37,7 @@ jobs:
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
-        TNAME: DIR-882
+        TNAME: K2P
       run: |
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
@@ -99,5 +99,5 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: DIR-882
+        name: K2P
         path: /opt/images
