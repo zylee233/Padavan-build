@@ -1,4 +1,4 @@
-name: RM2100
+name: RT-AC85P
 
 on: 
   release:
@@ -37,7 +37,7 @@ jobs:
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
-        TNAME: RM2100
+        TNAME: RT-AC85P
       run: |
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
@@ -75,8 +75,8 @@ jobs:
         ##内网穿透服务##
         echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=y" >> .config #zerotier ~1.3M
         echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> .config #aliddns
-        echo "CONFIG_FIRMWARE_INCLUDE_DDNSTO=n" >> .config #ddnsto ~0.5M
-        echo "CONFIG_FIRMWARE_INCLUDE_WIREGUARD=n" >> .config #wireguard ~10k
+        echo "CONFIG_FIRMWARE_INCLUDE_DDNSTO=y" >> .config #ddnsto ~0.5M
+        echo "CONFIG_FIRMWARE_INCLUDE_WIREGUARD=y" >> .config #wireguard ~10k
         ##内网穿透服务##
         echo "CONFIG_FIRMWARE_INCLUDE_ALDRIVER=n" >> .config  #ALDRIVER  ~3m
         echo "CONFIG_FIRMWARE_INCLUDE_MENTOHUST=n" >> .config #mentohust
@@ -99,5 +99,5 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: RM2100
+        name: RT-AC85P
         path: /opt/images
